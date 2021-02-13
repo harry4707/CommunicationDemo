@@ -12,7 +12,7 @@
 
 void error_handling(char *message);
 
-int main(int argc, char *argv []) {
+int main(int argc, char *argv[]) {
     int sd;
     struct sockaddr_in serv_addr;
     int str_len;
