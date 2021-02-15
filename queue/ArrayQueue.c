@@ -57,10 +57,10 @@ void *consume (void *arg) {
         }
         //produce()操作(生产产品)
         consumer_id = g_buffer[out];
-        printf("%d begin consume product %d\n", num, consume_id);
+        printf("consumer-%d begin consume product %d\n", consumer_id, num);
         g_buffer[out] = -1;
         out = (out + 1) % BUFFSIZE; // to move the point to next position of production
-        printf("%d end consumer product %d \n", num, consumer_id);
+        printf("consumer-%d end consumer product %d \n", consumer_id, num);
         pthread_mutex_unlock(&g_mutex);
         sem_post(&g_sem_full);// use the semaphore to communicate reciprocally
         sleep(1);
@@ -88,10 +88,10 @@ void *produce(void *arg) {
 
             printf("\n");
         }
-        printf("%d begin produce product %d\n", num, producer_id);
+        printf("producer-%d begin produce product %d\n", producer_id, num);
         g_buffer[in] = producer_id;
         in = (in + 1) % BUFFSIZE;
-        printf("%d end produce product %d\n", num, producer_id++);
+        printf("producer-%d end produce product %d\n", producer_id++, num);
         pthread_mutex_unlock(&g_mutex);
         sem_post(&g_sem_empty);
         sleep(5);
