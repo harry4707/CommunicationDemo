@@ -37,6 +37,7 @@ pthread_t g_thread[CONSUMERS_COUNT + PRODUCERS_COUNT];
 
 void *consumer (void *arg) {
     int i;
+    int num = (int) arg;
     while (1)
     {
         printf("%d wait buffer not empty\n", num);
