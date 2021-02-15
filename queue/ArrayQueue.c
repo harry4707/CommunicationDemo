@@ -2,7 +2,6 @@
 // Created by 姚雨 on 2021/2/15.
 //
 
-#include "ArrayQueue.h"
 #include <unistd.h>
 #include <sys/types.h>
 #include <pthread.h>
