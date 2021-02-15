@@ -86,7 +86,7 @@ void *produce(void *arg) {
             printf("\n");
         }
         printf("%d begin produce product %d\n", num, producer_id);
-        g_buffer[in] = produce_id;
+        g_buffer[in] = producer_id;
         in = (in + 1) % BUFFSIZE;
         printf("%d end produce product %d\n", num, producer_id++);
         pthread_mutex_unlock(&g_mutex);
@@ -110,7 +110,7 @@ int main(void)
 
 
     for (i = 0; i < CONSUMERS_COUNT; i++)
-        pthread_create(&g_thread[i], NULL, consume, (void *)i);
+        pthread_create(&g_thread[i], NULL, consumer, (void *)i);
 
     for (i = 0; i < PRODUCERS_COUNT; i++)
         pthread_create(&g_thread[CONSUMERS_COUNT + i], NULL, produce, (void *)i);
