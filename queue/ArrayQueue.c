@@ -37,31 +37,32 @@ pthread_t g_thread[CONSUMERS_COUNT + PRODUCERS_COUNT];
 
 void *consume (void *arg) {
     int i;
-    int num = (int) arg;
+    int num = (int)arg;
     while (1)
     {
         printf("%d wait buffer not empty\n", num);
         sem_wait(&g_sem_empty);
         pthread_mutex_lock(&g_mutex);
-        for (i = 0; i < BUFFSIZE; i++ ) {
-            printf("%02d", i);
-            if (g_buffer[i] == -1) {
+        for (i = 0; i < BUFFSIZE; i++)
+        {
+            printf("%02d ", i);
+            if (g_buffer[i] == -1)
                 printf("%s", "null");
-            } else {
+            else
                 printf("%d", g_buffer[i]);
-            }
             if (i == out) {
-                printf("\t<--consumer");
+                printf("\t<--consume");
             }
             printf("\n");
         }
+        //produce()操作(生产产品)
         consumer_id = g_buffer[out];
-        printf("%d begin consumer product %d \n", num, consumer_id);
+        printf("%d begin consume product %d\n", num, consume_id);
         g_buffer[out] = -1;
         out = (out + 1) % BUFFSIZE; // to move the point to next position of production
         printf("%d end consumer product %d \n", num, consumer_id);
         pthread_mutex_unlock(&g_mutex);
-        sem_post(&g_sem_full);
+        sem_post(&g_sem_full);// use the semaphore to communicate reciprocally
         sleep(1);
     }
     return NULL;
@@ -74,7 +75,8 @@ void *produce(void *arg) {
         printf("%d wait buffer not full\n", num);
         sem_wait(&g_sem_full);
         pthread_mutex_lock(&g_mutex);
-        for (i=0; i < BUFFSIZE; i++) {
+        for (i = 0; i < BUFFSIZE; i++)
+        {
             printf("%02d ", i);
             if (g_buffer[i] == -1)
                 printf("%s", "null");
@@ -82,7 +84,8 @@ void *produce(void *arg) {
                 printf("%d", g_buffer[i]);
 
             if (i == in)
-                printf("\t<--produce");// wait production
+                printf("\t<--produce");
+
             printf("\n");
         }
         printf("%d begin produce product %d\n", num, producer_id);
@@ -93,7 +96,6 @@ void *produce(void *arg) {
         sem_post(&g_sem_empty);
         sleep(5);
     }
-    return  NULL;
 }
 
 int main(void)
@@ -102,9 +104,8 @@ int main(void)
     // init the globalArray
     for (i = 0; i < BUFFSIZE; i++)
         g_buffer[i] = -1;
-
-    sem_init(&g_sem_full, 0, BUFFSIZE);
-    sem_init(&g_sem_empty, 0, 0);
+    sem_init(&g_sem_full, 0, BUFFSIZE);// sem_full to notify the producer
+    sem_init(&g_sem_empty, 0, 0); // sem_empty to notify the consumer
 
     pthread_mutex_init(&g_mutex, NULL);
 
@@ -115,6 +116,7 @@ int main(void)
     for (i = 0; i < PRODUCERS_COUNT; i++)
         pthread_create(&g_thread[CONSUMERS_COUNT + i], NULL, produce, (void *)i);
 
+    //
     for (i = 0; i < CONSUMERS_COUNT + PRODUCERS_COUNT; i++)
         pthread_join(g_thread[i], NULL);
 
