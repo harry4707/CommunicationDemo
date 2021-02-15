@@ -120,7 +120,7 @@ int main(void)
     for (i = 0; i < CONSUMERS_COUNT + PRODUCERS_COUNT; i++)
         pthread_join(g_thread[i], NULL);
 
-    pthread_mutex_destroy(&g_mutex, NULL); // frees the resources allocated for mutex
-    pthread_cond_destroy(&g_cond, NULL);
+    pthread_mutex_destroy(&g_mutex); // frees the resources allocated for mutex
+    pthread_cond_destroy(&g_cond);
     return 0;
 }
