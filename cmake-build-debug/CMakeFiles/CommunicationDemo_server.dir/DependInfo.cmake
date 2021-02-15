@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/Users/yaoyu/CommunicationDemo/client.c" "/Users/yaoyu/CommunicationDemo/cmake-build-debug/CMakeFiles/CommunicationDemo.dir/client.c.o"
+  "/Users/yaoyu/CommunicationDemo/server.c" "/Users/yaoyu/CommunicationDemo/cmake-build-debug/CMakeFiles/CommunicationDemo_server.dir/server.c.o"
   )
 set(CMAKE_C_COMPILER_ID "AppleClang")
 

@@ -131,44 +131,84 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named CommunicationDemo
+# Target rules for targets named CommunicationDemo_server
 
 # Build rule for target.
-CommunicationDemo: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CommunicationDemo
-.PHONY : CommunicationDemo
+CommunicationDemo_server: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CommunicationDemo_server
+.PHONY : CommunicationDemo_server
 
 # fast build rule for target.
-CommunicationDemo/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/CommunicationDemo.dir/build.make CMakeFiles/CommunicationDemo.dir/build
-.PHONY : CommunicationDemo/fast
+CommunicationDemo_server/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CommunicationDemo_server.dir/build.make CMakeFiles/CommunicationDemo_server.dir/build
+.PHONY : CommunicationDemo_server/fast
 
-main.o: main.cpp.o
+#=============================================================================
+# Target rules for targets named CommunicationDemo_client
 
-.PHONY : main.o
+# Build rule for target.
+CommunicationDemo_client: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CommunicationDemo_client
+.PHONY : CommunicationDemo_client
+
+# fast build rule for target.
+CommunicationDemo_client/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CommunicationDemo_client.dir/build.make CMakeFiles/CommunicationDemo_client.dir/build
+.PHONY : CommunicationDemo_client/fast
+
+client.o: client.c.o
+
+.PHONY : client.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/CommunicationDemo.dir/build.make CMakeFiles/CommunicationDemo.dir/main.cpp.o
-.PHONY : main.cpp.o
+client.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CommunicationDemo_client.dir/build.make CMakeFiles/CommunicationDemo_client.dir/client.c.o
+.PHONY : client.c.o
 
-main.i: main.cpp.i
+client.i: client.c.i
 
-.PHONY : main.i
+.PHONY : client.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/CommunicationDemo.dir/build.make CMakeFiles/CommunicationDemo.dir/main.cpp.i
-.PHONY : main.cpp.i
+client.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CommunicationDemo_client.dir/build.make CMakeFiles/CommunicationDemo_client.dir/client.c.i
+.PHONY : client.c.i
 
-main.s: main.cpp.s
+client.s: client.c.s
 
-.PHONY : main.s
+.PHONY : client.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/CommunicationDemo.dir/build.make CMakeFiles/CommunicationDemo.dir/main.cpp.s
-.PHONY : main.cpp.s
+client.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CommunicationDemo_client.dir/build.make CMakeFiles/CommunicationDemo_client.dir/client.c.s
+.PHONY : client.c.s
+
+server.o: server.c.o
+
+.PHONY : server.o
+
+# target to build an object file
+server.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CommunicationDemo_server.dir/build.make CMakeFiles/CommunicationDemo_server.dir/server.c.o
+.PHONY : server.c.o
+
+server.i: server.c.i
+
+.PHONY : server.i
+
+# target to preprocess a source file
+server.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CommunicationDemo_server.dir/build.make CMakeFiles/CommunicationDemo_server.dir/server.c.i
+.PHONY : server.c.i
+
+server.s: server.c.s
+
+.PHONY : server.s
+
+# target to generate assembly for a file
+server.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CommunicationDemo_server.dir/build.make CMakeFiles/CommunicationDemo_server.dir/server.c.s
+.PHONY : server.c.s
 
 # Help Target
 help:
@@ -178,10 +218,14 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... CommunicationDemo"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... CommunicationDemo_client"
+	@echo "... CommunicationDemo_server"
+	@echo "... client.o"
+	@echo "... client.i"
+	@echo "... client.s"
+	@echo "... server.o"
+	@echo "... server.i"
+	@echo "... server.s"
 .PHONY : help
 
 

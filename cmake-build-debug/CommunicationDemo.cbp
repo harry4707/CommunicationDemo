@@ -37,8 +37,8 @@
 					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/yaoyu/CommunicationDemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="CommunicationDemo">
-				<Option output="/Users/yaoyu/CommunicationDemo/cmake-build-debug/CommunicationDemo" prefix_auto="0" extension_auto="0"/>
+			<Target title="CommunicationDemo_server">
+				<Option output="/Users/yaoyu/CommunicationDemo/cmake-build-debug/CommunicationDemo_server" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/Users/yaoyu/CommunicationDemo/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
@@ -53,14 +53,14 @@
 					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/yaoyu/CommunicationDemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 CommunicationDemo"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/yaoyu/CommunicationDemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 CommunicationDemo_server"/>
 					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/yaoyu/CommunicationDemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -j4 -f &quot;/Users/yaoyu/CommunicationDemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/yaoyu/CommunicationDemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="CommunicationDemo/fast">
-				<Option output="/Users/yaoyu/CommunicationDemo/cmake-build-debug/CommunicationDemo" prefix_auto="0" extension_auto="0"/>
+			<Target title="CommunicationDemo_server/fast">
+				<Option output="/Users/yaoyu/CommunicationDemo/cmake-build-debug/CommunicationDemo_server" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/Users/yaoyu/CommunicationDemo/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
@@ -75,15 +75,65 @@
 					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/yaoyu/CommunicationDemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 CommunicationDemo/fast"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/yaoyu/CommunicationDemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 CommunicationDemo_server/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/yaoyu/CommunicationDemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/yaoyu/CommunicationDemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/yaoyu/CommunicationDemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="CommunicationDemo_client">
+				<Option output="/Users/yaoyu/CommunicationDemo/cmake-build-debug/CommunicationDemo_client" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/yaoyu/CommunicationDemo/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/9.1.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/yaoyu/CommunicationDemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 CommunicationDemo_client"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/yaoyu/CommunicationDemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/yaoyu/CommunicationDemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/yaoyu/CommunicationDemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="CommunicationDemo_client/fast">
+				<Option output="/Users/yaoyu/CommunicationDemo/cmake-build-debug/CommunicationDemo_client" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/yaoyu/CommunicationDemo/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/9.1.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/yaoyu/CommunicationDemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 CommunicationDemo_client/fast"/>
 					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/yaoyu/CommunicationDemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -j4 -f &quot;/Users/yaoyu/CommunicationDemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/yaoyu/CommunicationDemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/yaoyu/CommunicationDemo/main.cpp">
-			<Option target="CommunicationDemo"/>
+		<Unit filename="/Users/yaoyu/CommunicationDemo/client.c">
+			<Option target="CommunicationDemo_client"/>
+		</Unit>
+		<Unit filename="/Users/yaoyu/CommunicationDemo/server.c">
+			<Option target="CommunicationDemo_server"/>
+		</Unit>
+		<Unit filename="/Users/yaoyu/CommunicationDemo/server.h">
+			<Option target="CommunicationDemo_server"/>
 		</Unit>
 		<Unit filename="/Users/yaoyu/CommunicationDemo/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>

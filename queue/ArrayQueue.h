@@ -1,0 +1,15 @@
+//
+// Created by 姚雨 on 2021/2/15.
+//
+
+#ifndef COMMUNICATIONDEMO_ARRAYQUEUE_H
+#define COMMUNICATIONDEMO_ARRAYQUEUE_H
+
+
+class ArrayQueue{
+
+};
+
+
+#endif //COMMUNICATIONDEMO_ARRAYQUEUE_H
+

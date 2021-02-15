@@ -1,3 +1,4 @@
 /Users/yaoyu/CommunicationDemo/cmake-build-debug/CMakeFiles/rebuild_cache.dir
 /Users/yaoyu/CommunicationDemo/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/yaoyu/CommunicationDemo/cmake-build-debug/CMakeFiles/CommunicationDemo.dir
+/Users/yaoyu/CommunicationDemo/cmake-build-debug/CMakeFiles/CommunicationDemo_server.dir
+/Users/yaoyu/CommunicationDemo/cmake-build-debug/CMakeFiles/CommunicationDemo_client.dir

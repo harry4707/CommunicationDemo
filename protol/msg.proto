@@ -1,0 +1,38 @@
+syntax="proto3";
+package LOGCXX;
+
+message MsgLogBatch {
+    BatchHeader batchHeader = 1;
+    repeated MsgLog msgLogs = 2;
+}
+
+message BatchHeader {
+    string taskName=1;
+    string language=2;
+    string cluster=3;
+    string psm=4;
+    string podName=5;
+    string stage=6;
+    bytes host=7;
+    string idc=8;
+}
+
+message MsgLog {
+    MsgHeader header = 1;
+
+    message KeyValue {
+        string key = 1;
+        string value = 2;
+    }
+
+    repeated KeyValue tags = 2;
+    bytes msg = 3;
+}
+
+message MsgHeader {
+    string level=1;
+    string location=2;
+    string logID=3;
+    int64 ts=4;
+    uint64 spanID=5;
+}
