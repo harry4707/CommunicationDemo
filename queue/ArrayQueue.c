@@ -40,7 +40,7 @@ void *consume (void *arg) {
     int num = (int)arg;
     while (1)
     {
-        printf("%d wait buffer not empty\n", num);
+        printf("consumer-%d wait buffer not empty\n", num);
         sem_wait(&g_sem_empty);
         pthread_mutex_lock(&g_mutex);
         for (i = 0; i < BUFFSIZE; i++)
@@ -51,7 +51,7 @@ void *consume (void *arg) {
             else
                 printf("%d", g_buffer[i]);
             if (i == out) {
-                printf("\t<--consume");
+                printf("\t<--consume-%d", num);
             }
             printf("\n");
         }
@@ -84,7 +84,7 @@ void *produce(void *arg) {
                 printf("%d", g_buffer[i]);
 
             if (i == in)
-                printf("\t<--produce");
+                printf("\t<--produce-%d", num);
 
             printf("\n");
         }
