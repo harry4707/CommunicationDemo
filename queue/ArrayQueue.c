@@ -30,9 +30,9 @@ unsigned short out = 0;// the point of consumer
 unsigned short producer_id = 0;
 unsigned short consumer_id = 0;
 
-sem_t g_sem_full //the count of buffer can be used
-sem_t g_sem_empty // the count of production can be consumer
-pthread_mutex_t  g_mutex // mutex sempher
+sem_t g_sem_full;//the count of buffer can be used
+sem_t g_sem_empty; // the count of production can be consumer
+pthread_mutex_t  g_mutex; // mutex sempher
 pthread_t g_thread[CONSUMERS_COUNT + PRODUCERS_COUNT];
 
 void *consumer (void *arg) {
