@@ -35,7 +35,7 @@ sem_t g_sem_empty; // the count of production can be consumer
 pthread_mutex_t  g_mutex; // mutex sempher
 pthread_t g_thread[CONSUMERS_COUNT + PRODUCERS_COUNT];
 
-void *consumer (void *arg) {
+void *consume (void *arg) {
     int i;
     int num = (int) arg;
     while (1)
@@ -110,7 +110,7 @@ int main(void)
 
 
     for (i = 0; i < CONSUMERS_COUNT; i++)
-        pthread_create(&g_thread[i], NULL, consumer, (void *)i);
+        pthread_create(&g_thread[i], NULL, consume, (void *)i);
 
     for (i = 0; i < PRODUCERS_COUNT; i++)
         pthread_create(&g_thread[CONSUMERS_COUNT + i], NULL, produce, (void *)i);
