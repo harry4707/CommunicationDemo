@@ -63,7 +63,7 @@ void *consume (void *arg) {
         printf("consumer-%d end consumer product %d \n", num, consume_id++);
         pthread_mutex_unlock(&g_mutex);
         sem_post(&g_sem_full);// use the semaphore to communicate reciprocally
-        sleep(1);
+        sleep(5);
     }
     return NULL;
 }
@@ -94,7 +94,7 @@ void *produce(void *arg) {
         printf("producer-%d end produce product %d\n", num, produce_id++);
         pthread_mutex_unlock(&g_mutex);
         sem_post(&g_sem_empty);
-        sleep(5);
+        sleep(2);
     }
 }
 
