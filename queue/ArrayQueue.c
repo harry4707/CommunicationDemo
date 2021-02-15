@@ -41,18 +41,18 @@ void *consumer (void *arg) {
     while (1)
     {
         printf("%d wait buffer not empty\n", num);
-        sem_wait(&g_sem_empty)
-    }
-    pthread_mutex_lock(&g_mutex);
-    for (i = 0; i < BUFFSIZE; i++ ) {
-        printf("%02d", i);
-        if (g_buffer[i] == -1) {
-            printf("%s", "null")
-        } else {
-            printf("%d", g_buffer[i]);
-        }
-        if (i == out) {
-            printf("\t<--consumer");
+        sem_wait(&g_sem_empty);
+        pthread_mutex_lock(&g_mutex);
+        for (i = 0; i < BUFFSIZE; i++ ) {
+            printf("%02d", i);
+            if (g_buffer[i] == -1) {
+                printf("%s", "null");
+            } else {
+                printf("%d", g_buffer[i]);
+            }
+            if (i == out) {
+                printf("\t<--consumer");
+            }
             printf("\n");
         }
         consumer_id = g_buffer[out];
@@ -85,10 +85,10 @@ void *produce(void *arg) {
                 printf("\t<--produce");// wait production
             printf("\n");
         }
-        printf("%d begin produce product %d\n", num, produce_id);
+        printf("%d begin produce product %d\n", num, producer_id);
         g_buffer[in] = produce_id;
         in = (in + 1) % BUFFSIZE;
-        printf("%d end produce product %d\n", num, produce_id++);
+        printf("%d end produce product %d\n", num, producer_id++);
         pthread_mutex_unlock(&g_mutex);
         sem_post(&g_sem_empty);
         sleep(5);
@@ -119,7 +119,7 @@ int main(void)
         pthread_join(g_thread[i], NULL);
 
     sem_destroy(&g_sem_full);
-    sem_destroy(&g_sem_empty) //destroys the unnamed semaphore at the address pointed to by sem.
+    sem_destroy(&g_sem_empty);//destroys the unnamed semaphore at the address pointed to by sem.
     pthread_mutex_destroy(&g_mutex); // frees the resources allocated for mutex
 
     return 0;
