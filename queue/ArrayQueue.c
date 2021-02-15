@@ -18,10 +18,10 @@
 #define PRODUCERS_COUNT 2   //the count of producer
 #define BUFFSIZE 5
 
-//do {
-//    perror(m);// to display the message of error
-//    exit(EXIT_FAILURE);
-//}   while(0)
+do {
+    perror(m);// to display the message of error
+    exit(EXIT_FAILURE);
+}   while(0)
 
 
 int g_buffer[BUFFSIZE];
