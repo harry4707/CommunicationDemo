@@ -60,6 +60,7 @@ void *consume (void *arg) {
         out = (out + 1) % BUFFSIZE; // to move the point to next position of production
         printf("consumer-%d end consumer product %d \n", num, consume_id++);
         production_num --;
+        pthread_cond_signal(&g_cond);
         pthread_mutex_unlock(&g_mutex);
         sleep(5);
     }
@@ -93,6 +94,7 @@ void *produce(void *arg) {
         in = (in + 1) % BUFFSIZE;
         printf("producer-%d end produce product %d\n", num, produce_id++);
         production_num ++;
+        pthread_cond_signal(&g_cond);
         pthread_mutex_unlock(&g_mutex);
         sleep(2);
     }
