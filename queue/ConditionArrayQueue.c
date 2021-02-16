@@ -37,13 +37,11 @@ void *consume (void *arg) {
     int num = (int)arg;
     while (1)
     {
-
+        pthread_mutex_lock(&g_mutex);
         while(production_num == 0) {
             printf("consumer-%d begin wait a condtion ...\n", num);
             pthread_cond_wait(&g_cond, &g_mutex);
         }
-
-        pthread_mutex_lock(&g_mutex);
         for (i = 0; i < BUFFSIZE; i++)
         {
             printf("%02d ", i);
