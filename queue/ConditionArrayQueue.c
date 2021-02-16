@@ -90,9 +90,9 @@ void *produce(void *arg) {
         in = (in + 1) % BUFFSIZE;
         printf("producer-%d end produce product %d\n", num, produce_id++);
         ++production_num ;
-        pthread_cond_broadcast(&g_cond);
         printf("producer-%d signal ...\n", num);
         pthread_mutex_unlock(&g_mutex);
+        pthread_cond_broadcast(&g_cond);
         printf("producer-%d mutex_unlock ...\n", num);
         sleep(1);
     }
