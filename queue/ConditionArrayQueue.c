@@ -75,7 +75,7 @@ void *produce(void *arg) {
     int i;
     while (1) {
         pthread_mutex_lock(&g_mutex);
-        while(production_num >= BUFFSIZE) {
+        while(production_num == BUFFSIZE) {
             printf("the queue is full producer-%d begin wait a condtion ...\n", num);
             pthread_cond_wait(&g_cond, &g_mutex);
         }
