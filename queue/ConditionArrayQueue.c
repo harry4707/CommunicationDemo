@@ -12,11 +12,15 @@
 #include <errno.h>
 #include <string.h>
 
-//
 #define  ERR_EXIT(m)
 #define CONSUMERS_COUNT 2   //the count of consumer
 #define PRODUCERS_COUNT 2   //the count of producer
 #define BUFFSIZE 5
+
+do {
+    perror(m);// to display the message of error
+    exit(EXIT_FAILURE);
+}   while(0)
 
 
 int g_buffer[BUFFSIZE];
@@ -25,8 +29,6 @@ unsigned short out = 0;// the point of consumer
 unsigned short produce_id = 0;
 unsigned short consume_id = 0;
 
-sem_t g_sem_full;//the count of buffer can be used
-sem_t g_sem_empty; // the count of production can be consumer
 pthread_mutex_t  g_mutex; // mutex
 pthread_cond_t g_cond;    // global condition var
 pthread_t g_thread[CONSUMERS_COUNT + PRODUCERS_COUNT];
