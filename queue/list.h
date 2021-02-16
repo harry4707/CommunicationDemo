@@ -28,6 +28,6 @@ void *list_value(LIST *list);// 获取头节点数据
 #ifdef __cplusplus
 #endif
 #endif
-};
+
 
 
