@@ -94,7 +94,7 @@ void *produce(void *arg) {
         pthread_mutex_unlock(&g_mutex);
         pthread_cond_broadcast(&g_cond);
         printf("producer-%d mutex_unlock ...\n", num);
-        printf("producer-%d production_num is %d ...\n", num, production_num)
+        printf("producer-%d production_num is %d ...\n", num, production_num);
         sleep(1);
     }
 }
