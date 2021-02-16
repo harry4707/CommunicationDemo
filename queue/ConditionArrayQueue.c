@@ -39,7 +39,6 @@ void *consume (void *arg) {
     {
         printf("consumer-%d begin wait a condtion ...\n", num);
         pthread_cond_wait(&g_cond, &g_mutex);
-
         pthread_mutex_lock(&g_mutex);
         for (i = 0; i < BUFFSIZE; i++)
         {
@@ -90,6 +89,7 @@ void *produce(void *arg) {
         pthread_cond_signal(&g_cond);
         printf("producer-%d signal ...\n", num);
         pthread_mutex_unlock(&g_mutex);
+        printf("producer-%d mutex_unlock ...\n", num);
         sleep(2);
     }
 }
