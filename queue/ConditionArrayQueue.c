@@ -12,15 +12,17 @@
 #include <errno.h>
 #include <string.h>
 
-#define  ERR_EXIT(m)
+#define ERR_EXIT(m) \
+        do \
+        { \
+                perror(m); \
+                exit(EXIT_FAILURE); \
+        } while(0)
 #define CONSUMERS_COUNT 2   //the count of consumer
 #define PRODUCERS_COUNT 2   //the count of producer
 #define BUFFSIZE 5
 
-do {
-    perror(m);// to display the message of error
-    exit(EXIT_FAILURE);
-}   while(0)
+
 
 
 int g_buffer[BUFFSIZE];
