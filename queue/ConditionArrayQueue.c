@@ -39,7 +39,7 @@ void *consume (void *arg) {
     {
         pthread_mutex_lock(&g_mutex);
         while(production_num == 0) {
-            printf("consumer-%d begin wait a condtion ...\n", num);
+            printf("the queue is empty consumer-%d begin wait a condtion ...\n", num);
             pthread_cond_wait(&g_cond, &g_mutex);
         }
         for (i = 0; i < BUFFSIZE; i++)
@@ -72,7 +72,7 @@ void *produce(void *arg) {
     while (1) {
         pthread_mutex_lock(&g_mutex);
         while(production_num >= BUFFSIZE) {
-            printf("producer-%d begin wait a condtion ...\n", num);
+            printf("the queue is full producer-%d begin wait a condtion ...\n", num);
             pthread_cond_wait(&g_cond, &g_mutex);
         }
         for (i = 0; i < BUFFSIZE; i++)
