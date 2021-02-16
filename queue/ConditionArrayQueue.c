@@ -37,10 +37,9 @@ void *consume (void *arg) {
     int num = (int)arg;
     while (1)
     {
-        while (production_num <= 0) {
-            printf("consumer-%d begin wait a condtion ...\n", num);
-            pthread_cond_wait(&g_cond, &g_mutex);
-        }
+        printf("consumer-%d begin wait a condtion ...\n", num);
+        pthread_cond_wait(&g_cond, &g_mutex);
+
         pthread_mutex_lock(&g_mutex);
         for (i = 0; i < BUFFSIZE; i++)
         {
@@ -89,6 +88,7 @@ void *produce(void *arg) {
         printf("producer-%d end produce product %d\n", num, produce_id++);
         ++production_num ;
         pthread_cond_signal(&g_cond);
+        printf("producer-%d signal ...\n", num);
         pthread_mutex_unlock(&g_mutex);
         sleep(2);
     }
