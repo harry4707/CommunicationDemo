@@ -90,7 +90,7 @@ void *produce(void *arg) {
         printf("producer-%d signal ...\n", num);
         pthread_mutex_unlock(&g_mutex);
         printf("producer-%d mutex_unlock ...\n", num);
-        sleep(2);
+        sleep(1);
     }
 }
 
