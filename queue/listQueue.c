@@ -20,8 +20,8 @@ pthread_mutex_t mutex;
 //condition
 pthread_cond_t cond;
 
-//table
-LIST *list
+//list
+LIST *list;
 
 void *producer(void *args) {
     int *num;// int point var
