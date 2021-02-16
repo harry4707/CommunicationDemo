@@ -13,11 +13,12 @@
 #include <string.h>
 
 //
-#define  ERR_EXIT(m)
-do {
-    perror(m);// to display the message of error
-    exit(EXIT_FAILURE);
-} while(0)
+#define ERR_EXIT(m) \
+        do \
+        { \
+                perror(m); \
+                exit(EXIT_FAILURE); \
+        } while(0)
 #define CONSUMERS_COUNT 2   //the count of consumer
 #define PRODUCERS_COUNT 2   //the count of producer
 #define BUFFSIZE 5
