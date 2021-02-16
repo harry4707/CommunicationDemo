@@ -60,6 +60,7 @@ void *consume (void *arg) {
         out = (out + 1) % BUFFSIZE; // to move the point to next position of production
         printf("consumer-%d end consumer product %d \n", num, consume_id++);
         --production_num;
+        pthread_cond_signal(&g_cond);
         pthread_mutex_unlock(&g_mutex);
         sleep(5);
     }
@@ -70,6 +71,10 @@ void *produce(void *arg) {
     int i;
     while (1) {
         pthread_mutex_lock(&g_mutex);
+        while(production_num >= BUFFSIZE) {
+            printf("producer-%d begin wait a condtion ...\n", num);
+            pthread_cond_wait(&g_cond, &g_mutex);
+        }
         for (i = 0; i < BUFFSIZE; i++)
         {
             printf("%02d ", i);
@@ -89,8 +94,8 @@ void *produce(void *arg) {
         printf("producer-%d end produce product %d\n", num, produce_id++);
         ++production_num ;
         printf("producer-%d signal ...\n", num);
+        pthread_cond_signal(&g_cond);
         pthread_mutex_unlock(&g_mutex);
-        pthread_cond_broadcast(&g_cond);
         printf("producer-%d mutex_unlock ...\n", num);
         printf("producer-%d production_num is %d ...\n", num, production_num);
         sleep(1);
