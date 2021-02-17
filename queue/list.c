@@ -5,8 +5,8 @@
 #include <stdlib.h>
 #include "list.h"
 
-List *list_init() {
-    List *list = (LIST *)malloc(sizeof(LIST));
+LIST *list_init() {
+    LIST *list = (LIST *)malloc(sizeof(LIST));
     if(list == NULL) {
         return NULL;
     }
